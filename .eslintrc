@@ -16,14 +16,6 @@
     },
     "rules": {
       "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0, "maxBOF": 0 }],
-      "padding-line-between-statements": [
-        "error",
-        { "blankLine": "always", "prev": "*", "next": "class" },
-        { "blankLine": "always", "prev": "*", "next": "block" },
-        { "blankLine": "always", "prev": "*", "next": "multiline-const" },
-        { "blankLine": "always", "prev": "*", "next": "multiline-block-like" },
-        { "blankLine": "always", "prev": "*", "next": "multiline-expression" }
-      ],
       "quotes": ["error", "double"],
       "semi": ["error", "always"],
       "max-depth": ["error", 4],
