@@ -15,6 +15,16 @@ describe('Ledger repository tests', () => {
     line4 = new LedgerLine(addressBeta, -12);
   });
 
+  it('should get ledgerLine like an object', () => {
+    const object = {
+      id: line1.Id,
+      date: line1.Date,
+      address: line1.Address,
+      balance: line1.Balance
+    }
+    expect(line1.getLineAsObject()).toEqual(object);
+  });
+
   it('should add a new line to ledger', () => {
     const ledgerRepo = new LedgerRepository();
     ledgerRepo.addNewLine(line1);

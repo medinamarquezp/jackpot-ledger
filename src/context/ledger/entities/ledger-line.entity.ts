@@ -17,8 +17,16 @@ export class LedgerLine {
     return { ...this };
   }
 
+  get Id () {
+    return this.id;
+  }
+
   get Address () {
     return this.address;
+  }
+
+  get Date () {
+    return this.date;
   }
 
   get Balance () {
