@@ -1,10 +1,10 @@
-import { getUid } from "@/src/context/shared/uids";
-import { Participant } from "@/src/context/pool/entities/participant.entity";
-import { PoolRepository } from "@/src/context/pool/repositories/pool.repository";
-import { PoolParticipant } from "@/src/context/pool/entities/pool-participant.entity";
-import { LedgerRepository } from "@/src/context/ledger/repositories/ledger.repository";
-import { JackpotRepository } from "@/src/context/jackpot/repositories/jackpot.repository";
-import { TransactionsService } from "@/src/context/transactions/services/transactions.service";
+import { getUid } from '@/src/context/shared/uids';
+import { Participant } from '@/src/context/pool/entities/participant.entity';
+import { PoolRepository } from '@/src/context/pool/repositories/pool.repository';
+import { PoolParticipant } from '@/src/context/pool/entities/pool-participant.entity';
+import { LedgerRepository } from '@/src/context/ledger/repositories/ledger.repository';
+import { JackpotRepository } from '@/src/context/jackpot/repositories/jackpot.repository';
+import { TransactionsService } from '@/src/context/transactions/services/transactions.service';
 
 describe('Transactions service tests', () => {
   let participantAlpha: Participant;
@@ -25,6 +25,12 @@ describe('Transactions service tests', () => {
     jackpotRepository = new JackpotRepository();
     ledgerRepository = new LedgerRepository();
     transactionsService = new TransactionsService(poolRepository, jackpotRepository, ledgerRepository);
+  });
+
+  it('should validate a negative deposit', () => {
+    expect(() => transactionsService.deposit(poolParticipantAlpha, -50)).toThrow(
+      'Deposit must receive a positive amount'
+    );
   });
 
   it('should add a deposit', () => {
